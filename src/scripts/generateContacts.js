@@ -1,5 +1,25 @@
+import { promises as fs } from 'fs';
 import { PATH_DB } from '../constants/contacts.js';
+import createFakeContact from './createFakeContact.js'; 
 
-const generateContacts = async (number) => {};
+export const addOneContact = async () => {
+    try {
+        const data = await fs.readFile(PATH_DB, 'utf8');
+        let contacts = [];
+        if (data) {
+            contacts = JSON.parse(data);
+        }
 
-await generateContacts(5);
+        const newContact = createFakeContact();
+        contacts.push(newContact);
+
+        await fs.writeFile(PATH_DB, JSON.stringify(contacts, null, 2), 'utf8');
+        console.log('One contact successfully added.');
+    } catch (err) {
+        console.error('Error processing the file:', err);
+    }
+};
+
+await addOneContact();
+
+
