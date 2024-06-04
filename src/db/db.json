@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "name": "Steve Ortiz",
+    "phone": "459.204.0747 x48803",
+    "email": "Susie18@yahoo.com",
+    "job": "Legacy Accounts Associate"
+  },
+  {
+    "name": "Patty McClure",
+    "phone": "1-589-226-0161",
+    "email": "Archibald.Hahn30@gmail.com",
+    "job": "Direct Marketing Analyst"
+  },
+  {
+    "name": "Daniel Mante",
+    "phone": "1-267-808-8274 x208",
+    "email": "Aric82@hotmail.com",
+    "job": "Direct Optimization Associate"
+  }
+]

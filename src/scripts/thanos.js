@@ -1,13 +1,21 @@
+import fs from 'fs/promises';
 import { PATH_DB } from '../constants/contacts.js';
-import { promises as fs } from 'fs';
 
-export const removeAllContacts = async () => {
+export const thanos = async () => {
     try {
-        await fs.writeFile(PATH_DB, JSON.stringify([], null, 2), 'utf8');
-        console.log('All contacts have been removed.');
-    } catch (err) {
-        console.error('Error writing to the file:', err);
+    const data = await fs.readFile(PATH_DB, 'utf8');
+    const contacts = JSON.parse(data);
+
+    for (let i = 0; i < contacts.length; i++) {
+        if (Math.random() < 0.5) {
+        contacts.splice(i, 1);
+        }
+    }
+
+    await fs.writeFile(PATH_DB, JSON.stringify(contacts, null, 2), 'utf8');
+    } catch (error) {
+    console.log(error);
     }
 };
 
-await removeAllContacts();
+await thanos();
